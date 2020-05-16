@@ -1,0 +1,29 @@
+
+.Movie-List {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.list-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: rgb(10, 131, 131);
+  margin-bottom: 20px;
+}
+
+.favourites {
+  color: grey;
+  font-style: italic;
+  margin: 10px 0px;
+}
+.pick-section {
+  display: flex;
+  justify-content: center;
+}
+
+.pick-button {
+  margin-bottom: 10px;
+  height: 20px;
+  width: 80px;
+}
