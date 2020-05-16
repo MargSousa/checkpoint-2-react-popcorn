@@ -1,6 +1,6 @@
-- Wild Code School - Checkpoint 2 Exercise - React
+#### Wild Code School - Checkpoint 2 Exercise - React
 
-# Deployment
+### Deployment
 
 - Link to the website deployed on Netlify : [Link]()
 

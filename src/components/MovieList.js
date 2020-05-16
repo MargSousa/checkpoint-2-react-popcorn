@@ -63,8 +63,8 @@ class MovieList extends React.Component {
 
     return(
       <div className="Movie-List">
-
-        <div className="list-title">Movies List:</div>
+        <div className="main-title">Movies</div>
+        <div className="fav-title">Favourites List</div>
         { favouriteMovies.length ? 
           <div>
             { favouriteMovies.map( movie =>
@@ -76,12 +76,13 @@ class MovieList extends React.Component {
                   value="pick"
                   className="button pick-button"
                 >
-                  Pick
+                  Pick a random favorite movie
                 </button>
             </div>
           </div> : 
           <div className="favourites"> No Favourites movies added...</div>
         }
+        <div className="movies-title">Movies List</div>
         <div className="list">
           { movies.map( movie => 
             <Movie key={movie.id} movie={movie} handleFavourite={this.handleFavourite}/>

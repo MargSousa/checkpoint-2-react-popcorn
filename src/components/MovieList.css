@@ -5,25 +5,38 @@
   flex-direction: column;
 }
 
-.list-title {
+.main-title {
   font-size: 22px;
   font-weight: bold;
   color: rgb(10, 131, 131);
   margin-bottom: 20px;
+  text-align: center;
+}
+
+.fav-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.movies-title {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .favourites {
   color: grey;
   font-style: italic;
-  margin: 10px 0px;
+  margin: 10px 0px 30px 0px;
 }
 .pick-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .pick-button {
-  margin-bottom: 10px;
-  height: 20px;
-  width: 80px;
+  background-color: rgb(245, 245, 245);
+}
+
+.pick-button:hover {
+  background-color: rgb(203, 203, 203);
 }
