@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import Movie from './Movie';
 import './MovieList.css'
@@ -9,18 +9,22 @@ class MovieList extends React.Component {
     super(props);
     this.state = {
       movies: [],
+      genres: [],
       favouriteMovies: [],
       randomMovie: []
     }
   }
 
   componentDidMount = () => {
-    let url = `https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json`;
+    const url = `https://raw.githubusercontent.com/wildcodeschoolparis/datas/master/movies.json`;
     axios.get(url)
-    .then( response => response.data )
-    .then( moviesData => {
-      let getMovies = moviesData.movies
-      this.setState({ movies: getMovies })
+    .then( response => {
+      const getMovies = response.data.movies;
+      const getGenres = response.data.genres;
+      this.setState({ 
+        movies: getMovies,
+        genres: getGenres
+      })
     })
   }
 
@@ -41,17 +45,17 @@ class MovieList extends React.Component {
   }
 
   getRandomMovie = () => {
-    const { history } = this.props;
-    const { movies } = this.state;
-    const number = Math.floor(Math.random() * 147);
-    let getRandomMovie = movies.filter(movie => movie.id === number)
-    
-    history.push({
-      pathname: '/movie-pick',
-      state: { detail: getRandomMovie }
-    });
+    const { favouriteMovies } = this.state;
+    let idLength = favouriteMovies.map(movie => movie.id).length;
+    let idIndex = Math.floor(Math.random() * idLength);    
+    let getRandomMovie = favouriteMovies.filter(movie => movie.id === favouriteMovies[idIndex].id)
 
     this.setState({ randomMovie: getRandomMovie })
+
+    this.props.history.push({
+      pathname: '/movie-pick',
+      state: { getRandomMovie }
+    });
   }
 
   render() {
@@ -67,7 +71,6 @@ class MovieList extends React.Component {
               <Movie key={movie.id} movie={movie} handleFavourite={this.handleFavourite} favourite/>
             )}
             <div className="pick-section">
-              <Link to="/movie-pick">
                 <button
                   onClick={this.getRandomMovie}
                   value="pick"
@@ -75,7 +78,6 @@ class MovieList extends React.Component {
                 >
                   Pick
                 </button>
-              </Link>
             </div>
           </div> : 
           <div className="favourites"> No Favourites movies added...</div>
