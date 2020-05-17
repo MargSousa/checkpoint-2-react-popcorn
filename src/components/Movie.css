@@ -40,7 +40,7 @@
 }
 
 .remove-button {
-  margin: 0px 0px 0px 5px;
+  margin: 0px 0px 0px 50px;
 }
 
 .add-button:hover {
@@ -52,7 +52,10 @@
 }
 
 @media(max-width: 768px) {
-  .button {
-    margin: 10px 30px;
+  .movie-info {
+    width: 200px;
+  }
+  .add-button {
+    margin: 0px 0px 0px 20px;
   }
 }

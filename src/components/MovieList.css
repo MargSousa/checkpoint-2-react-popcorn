@@ -28,15 +28,23 @@
   font-style: italic;
   margin: 10px 0px 30px 0px;
 }
-.pick-section {
+.fav-list {
+  margin: 10px 0px 20px 0px;
+}
+.pick {
   display: flex;
   justify-content: flex-end;
 }
 
 .pick-button {
+  margin-top: 10px;
   background-color: rgb(245, 245, 245);
 }
 
 .pick-button:hover {
   background-color: rgb(203, 203, 203);
+}
+
+.movies-filter {
+  margin: 10px 0px;
 }

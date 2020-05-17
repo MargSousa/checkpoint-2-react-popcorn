@@ -11,7 +11,9 @@ class MovieList extends React.Component {
       movies: [],
       genres: [],
       favouriteMovies: [],
-      randomMovie: []
+      randomMovie: [],
+      isFilterOn: false,
+      filterSelected: "",
     }
   }
 
@@ -58,33 +60,58 @@ class MovieList extends React.Component {
     });
   }
 
-  render() {
-    const { movies, favouriteMovies } = this.state;
+  handleFilter = (event) => {
+    let filter = event.target.value;
+    let filterMode = true;
+    
+    if(!filter) {
+      filterMode = false;
+    }
 
+    this.setState({ 
+      filterSelected: filter,
+      isFilterOn: filterMode 
+    })
+  }
+
+  render() {
+    const { movies, genres, favouriteMovies, filterSelected, isFilterOn } = this.state;
+
+    console.log(movies)
     return(
       <div className="Movie-List">
         <div className="main-title">Movies</div>
         <div className="fav-title">Favourites List</div>
         { favouriteMovies.length ? 
-          <div>
+          <div className="fav-list">
             { favouriteMovies.map( movie =>
               <Movie key={movie.id} movie={movie} handleFavourite={this.handleFavourite} favourite/>
             )}
-            <div className="pick-section">
+            <div className="pick">
                 <button
                   onClick={this.getRandomMovie}
                   value="pick"
                   className="button pick-button"
                 >
-                  Pick a random favorite movie
+                  Pick favorite movie
                 </button>
             </div>
           </div> : 
           <div className="favourites"> No Favourites movies added...</div>
         }
         <div className="movies-title">Movies List</div>
+        <div className="movies-filter">
+          <label>Filter by movie genre: </label>
+          <select onChange={this.handleFilter}>
+            <option value="">All </option>
+            { genres.map( genre => <option value={genre}>{genre}</option> )}
+          </select>
+        </div>
         <div className="list">
-          { movies.map( movie => 
+          { movies
+          .filter(
+            (movie) => !isFilterOn || movie.genres.includes(filterSelected))
+          .map( movie => 
             <Movie key={movie.id} movie={movie} handleFavourite={this.handleFavourite}/>
           )}
         </div>

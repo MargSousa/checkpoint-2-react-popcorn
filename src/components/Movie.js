@@ -21,9 +21,7 @@ function Movie(props) {
               value="remove"
               className="button remove-button"
               onClick={(event) => handleFavourite(event, movie)}
-              >
-                Remove from Favourites
-              </button>
+              >Remove</button>
             </div>
           </div>
         : 
