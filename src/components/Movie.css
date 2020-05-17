@@ -40,7 +40,7 @@
 }
 
 .remove-button {
-  margin: 0px 0px 0px 50px;
+  margin: 0px 0px 0px 60px;
 }
 
 .add-button:hover {
@@ -57,5 +57,8 @@
   }
   .add-button {
     margin: 0px 0px 0px 20px;
+  }
+  .star-icon {
+    width: 7%;  
   }
 }

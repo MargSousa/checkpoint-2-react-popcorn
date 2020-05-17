@@ -6,8 +6,6 @@ function MoviePick(props) {
   const { state } = props.location;
   const movie = state.getRandomMovie[0];
 
-  console.log(movie);
-
   return(
     <div className="Movie-Pick">
       <div>

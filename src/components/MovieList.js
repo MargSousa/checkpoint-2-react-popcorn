@@ -28,6 +28,12 @@ class MovieList extends React.Component {
         genres: getGenres
       })
     })
+    const getFav = JSON.parse(localStorage.getItem("favList"));
+    if (getFav) {
+      this.setState({ 
+        favouriteMovies: getFav,
+      })
+    }
   }
 
   handleFavourite = (event, movie) => {
@@ -44,6 +50,7 @@ class MovieList extends React.Component {
       favourites = favourites.filter(movie => movie.id !== newId);
     } 
     this.setState({ favouriteMovies: favourites})
+    localStorage.setItem('favList', JSON.stringify(favourites));
   }
 
   getRandomMovie = () => {
@@ -56,18 +63,16 @@ class MovieList extends React.Component {
 
     this.props.history.push({
       pathname: '/movie-pick',
-      state: { getRandomMovie }
+      state: { getRandomMovie, favouriteMovies: favouriteMovies }
     });
   }
 
   handleFilter = (event) => {
     let filter = event.target.value;
     let filterMode = true;
-    
     if(!filter) {
       filterMode = false;
     }
-
     this.setState({ 
       filterSelected: filter,
       isFilterOn: filterMode 
@@ -76,8 +81,7 @@ class MovieList extends React.Component {
 
   render() {
     const { movies, genres, favouriteMovies, filterSelected, isFilterOn } = this.state;
-
-    console.log(movies)
+    
     return(
       <div className="Movie-List">
         <div className="main-title">Movies</div>
@@ -93,7 +97,7 @@ class MovieList extends React.Component {
                   value="pick"
                   className="button pick-button"
                 >
-                  Pick favorite movie
+                  Pick random favorite
                 </button>
             </div>
           </div> : 
