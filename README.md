@@ -2,7 +2,7 @@
 
 ### Deployment
 
-- Link to the website deployed on Netlify : [Link]()
+- Link to the website deployed on Netlify : [https://boring-mestorf-cf5c40.netlify.app](https://boring-mestorf-cf5c40.netlify.app)
 
 # checkpoint-2-react-popcorn
 > Popcorn Time
